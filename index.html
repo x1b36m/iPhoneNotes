@@ -84,11 +84,11 @@
         left: 50%;
         transform: translateX(-50%);
         top: 26.3%;
-        color: red;
+        color: white;
         outline: none;
         border: none;
         resize: none;
-        font-size: 3vh;
+        font-size: 2.6vh;
         font-family: sans-serif;
       }
     </style>
@@ -101,7 +101,13 @@
       <p id="all-notes">All Notes</p>
       <div id="note-bg"></div>
       <p id="done" onclick="takeScreenshot()">Done</p>
-      <textarea id="inputtext" cols="10" wrap="off"></textarea>
+      <div id="inputtext" contenteditable="true"
+        style="position: absolute; border: none;
+            height: 45vh; width: 80vw; background-color: black;
+            left: 50%; transform: translateX(-50%);
+            top: 26.3%; color: white; outline: none;
+            white-space: pre-wrap;">
+      </div>
     </div>
     <script>
       function takeScreenshot() {
@@ -114,7 +120,7 @@
           canvas.toBlob(function(blob) {
             const link = document  .createElement("a");
             link.href = URL.createObjectURL(blob);
-            link.download = "screenshot.png";
+            link.download = "ehmed.png";
             link.click();
           }, "image/png");
         });
