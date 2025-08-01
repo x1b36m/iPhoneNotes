@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <title>
+      
+    </title>
+    <meta>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+      body, html {
+        display: flex;
+        background-color: #fff;
+        height: 100vh;
+        width: 100vw;
+      }
+      #icon-back {
+        position: absolute;
+        width: 3vw;
+        height: 2.5vh;
+        top: 20.5vh;
+        left: 10.8vw;
+        z-index: 1;
+      }
+      #icon-share {
+        position: absolute;
+        left: 65%;
+        width: 4.3vw;
+        height: 2.5vh;
+        top: 20.5vh;
+        left: 60vw;
+        z-index: 3;
+      }
+      #icon-menu {
+        position: absolute;
+        left: 75%;
+        width: 5vw;
+        height: 2.5vh;
+        top: 20.5vh;
+        left: 68vw;
+        z-index: 3;
+      }
+      #all-notes {
+        top: 18.2vh;
+        font-size: 2.3vh;
+        position: absolute;
+        color: rgba(217,176,85,254);
+        height: 2vh;
+        /*width: 20vw;*/
+        left: 16vw;
+        font-family: roboto;
+        z-index: 2;
+      }
+      #done {
+        font-size: 2.3vh;
+        font-family: roboto;
+        position: absolute;
+        color: rgba(217,176,85,254);
+        top: 18.2vh;
+        left: 76vw;
+        z-index: 4;
+        cursor: pointer;
+        
+        width: 10vw;
+        border-radius: 5px;
+      }
+      #note-bg {
+        border-radius: 4vw;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 18%;
+        width: 85vw;
+        height: 60vh;
+        background-color: black;
+      }
+      #All {
+        width: 100vw;
+        height: 100vh;
+      }
+      #inputtext {
+        position: absolute;
+        height: 45vh;
+        width: 80vw;
+        background-color: black;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 26.3%;
+        color: red;
+        outline: none;
+        border: none;
+        resize: none;
+        font-size: 3vh;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="All">
+      <img id="icon-back" src="https://raw.githubusercontent.com/Ehmedisdeaq/iosfont/main/icon-back.png">
+      <img id="icon-share" src="https://raw.githubusercontent.com/Ehmedisdeaq/iosfont/main/icon-share.png">
+      <img id="icon-menu" src="https://raw.githubusercontent.com/Ehmedisdeaq/iosfont/main/icon-menu.png">
+      <p id="all-notes">All Notes</p>
+      <div id="note-bg"></div>
+      <p id="done" onclick="takeScreenshot()">Done</p>
+      <textarea id="inputtext" cols="10" wrap="off"></textarea>
+    </div>
+    <script>
+      function takeScreenshot() {
+        const target = document  .getElementById("All");
+
+        html2canvas(target, {
+          useCORS: true,
+          allowTaint: false
+        }).then(canvas => {
+          canvas.toBlob(function(blob) {
+            const link = document  .createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "screenshot.png";
+            link.click();
+          }, "image/png");
+        });
+      }
+    </script>
+  </body>
+</html>
